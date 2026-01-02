@@ -1,0 +1,8 @@
+{
+  "name": "ChoufliHal",
+  "description": "Plateforme intelligente d’analyse psychologique par l’IA",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

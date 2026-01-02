@@ -1,0 +1,1 @@
+// This file is deprecated. Next.js uses next.config.mjs.

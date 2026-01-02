@@ -1,0 +1,1 @@
+// This file is deprecated. The application now uses Next.js 14 App Router.

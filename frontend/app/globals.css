@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Variables Globales et Thèmes
+ * Définition des couleurs de base pour les modes clair et sombre.
+ */
+:root {
+  --foreground-rgb: 15, 23, 42;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 255, 255, 255;
+}
+
+/**
+ * Comportement Global du Document
+ * Amélioration du défilement et du rendu des polices.
+ */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/**
+ * Personnalisation de la Barre de Défilement (Minimaliste)
+ * Un design fin qui s'intègre harmonieusement à l'interface Zen.
+ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1; 
+  border-radius: 20px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8; 
+}
+
+/**
+ * Transitions Globales
+ * Assure une fluidité de mouvement sur tous les éléments interactifs.
+ */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
+
+/**
+ * Utilitaires Glassmorphism (Effet Verre)
+ * Classes inspirées du design Gemini pour un rendu premium et moderne.
+ */
+@layer components {
+  /* Effet de verre principal avec flou d'arrière-plan */
+  .glass {
+    @apply bg-white/70 dark:bg-gray-900/75 backdrop-blur-2xl border border-white/30 dark:border-white/5 shadow-2xl;
+  }
+
+  /* Cartes avec une bordure subtile et ombre légère */
+  .glass-card {
+    @apply bg-white dark:bg-gray-800 border border-gray-100/50 dark:border-gray-700/50 shadow-sm rounded-[2rem];
+  }
+
+  /* Zone de saisie (Input) avec transition de focus fluide */
+  .glass-input {
+    @apply bg-white/50 dark:bg-gray-800/40 backdrop-blur-md border border-gray-200/60 dark:border-gray-700/60 
+           focus:bg-white dark:focus:bg-gray-900 focus:ring-4 focus:ring-primary-500/10 transition-all duration-500;
+  }
+
+  /* Texte en dégradé pour les titres et les éléments mis en avant */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-indigo-500 to-primary-400 
+           dark:from-primary-300 dark:via-primary-100 dark:to-indigo-300;
+  }
+
+  /**
+   * Animations Spécifiques
+   * Animation de pulsation pour l'enregistrement vocal.
+   */
+  .animate-vocal-pulse {
+    @apply relative;
+  }
+
+  .animate-vocal-pulse::after {
+    content: '';
+    @apply absolute inset-0 rounded-full border-2 border-red-500 animate-ping opacity-40;
+  }
+}
+
+/**
+ * Optimisation pour les messages de chat
+ * Suppression des bordures par défaut des zones de texte.
+ */
+textarea {
+  scrollbar-width: none; /* Cache la barre de défilement sur Firefox */
+}
+textarea::-webkit-scrollbar {
+  display: none; /* Cache la barre de défilement sur Chrome/Safari */
+}
